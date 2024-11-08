@@ -12,7 +12,6 @@ const Login = lazy(() => import("./pages/login/Login.jsx"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
 const SingleCategorise = lazy(() => import("./pages/SingleCategorise.jsx"));
 
-const Profile = lazy(() => import("./pages/Profiles/Profile.jsx"));
 const AddAi = lazy(() => import("./pages/AddAi.jsx"));
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
@@ -31,17 +30,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/error" element={<ErrorPage />} />
               <Route path="/forgotPassword" element={<ForgotPassword />} />
+
               <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute
-                    component={Profile}
-                    NavigateTo="login"
-                    Message="PLease Login First"
-                  />
-                }
-              />
-              {/* <Route
                 path="/addAi"
                 element={
                   <ProtectedRoute
@@ -50,12 +40,11 @@ function App() {
                     Message="PLease Login First"
                   />
                 }
-              /> */}
+              />
               <Route
                 path="/SingleCategorise/:id"
                 element={<SingleCategorise />}
               />
-              <Route path="/addAi" element={<AddAi />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </Suspense>

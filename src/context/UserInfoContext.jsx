@@ -15,7 +15,7 @@ export const UserInfoProvider = ({ children }) => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(
-          "https://introduction-of-ai-server.onrender.com/api/v1/auth/me",
+          "https://aiwebpage-server.onrender.com/api/v1/auth/me",
           {
             method: "GET",
             headers: {

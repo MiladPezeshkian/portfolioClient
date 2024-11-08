@@ -22,7 +22,7 @@ function AddAi() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://introduction-of-ai-server.onrender.com/api/v1/category"
+          "https://aiwebpage-server.onrender.com/api/v1/category"
         );
         const data = await response.json();
         setCategoryData(data.data.categories);
@@ -80,7 +80,7 @@ function AddAi() {
 
     try {
       const response = await fetch(
-        "https://introduction-of-ai-server.onrender.com/api/v1/ai",
+        "https://aiwebpage-server.onrender.com/api/v1/ai",
         {
           method: "POST",
           credentials: "include",

@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     const checkLoginStatus = async () => {
       try {
         const response = await fetch(
-          "https://introduction-of-ai-server.onrender.com/api/v1/auth/islogin",
+          "https://aiwebpage-server.onrender.com/api/v1/auth/islogin",
           {
             method: "GET", // نوع درخواست
             credentials: "include", // برای ارسال کوکی‌ها (اگر نیاز دارید)

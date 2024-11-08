@@ -14,7 +14,7 @@ function SingleCategorise() {
     const fetchAiTools = async () => {
       try {
         const response = await fetch(
-          `https://introduction-of-ai-server.onrender.com/api/v1/ai/category/${id}`
+          `https://aiwebpage-server.onrender.com/api/v1/ai/category/${id}`
         );
         if (!response.ok) {
           throw new Error("خطا در دریافت داده‌های ابزارهای هوش مصنوعی");

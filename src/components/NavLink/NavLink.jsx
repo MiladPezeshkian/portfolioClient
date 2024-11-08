@@ -19,7 +19,7 @@ function NavLink() {
     setLoading(true);
     try {
       const response = await fetch(
-        "https://introduction-of-ai-server.onrender.com/api/v1/auth/logout",
+        "https://aiwebpage-server.onrender.com/api/v1/auth/logout",
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

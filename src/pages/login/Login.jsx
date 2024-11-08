@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://introduction-of-ai-server.onrender.com/api/v1/auth/login",
+        "https://aiwebpage-server.onrender.com/api/v1/auth/login",
         {
           method: "POST",
           headers: {

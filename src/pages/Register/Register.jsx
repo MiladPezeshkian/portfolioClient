@@ -34,7 +34,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "https://introduction-of-ai-server.onrender.com/api/v1/auth/signup",
+        "https://aiwebpage-server.onrender.com/api/v1/auth/signup",
         {
           method: "POST",
           headers: {

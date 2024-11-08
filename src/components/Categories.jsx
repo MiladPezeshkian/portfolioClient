@@ -15,7 +15,7 @@ function Categories({ selectedCategory, setSelectedCategory }) {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://introduction-of-ai-server.onrender.com/api/v1/Category"
+          "https://aiwebpage-server.onrender.com/api/v1/Category"
         );
         const data = await response.json();
         setCategoryData(data.data.categories); // فرض می‌کنیم سرور داده‌ها را در یک فیلد categories ارسال می‌کند

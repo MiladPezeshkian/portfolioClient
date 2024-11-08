@@ -1,0 +1,91 @@
+.links {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem; /* افزایش اندازه فونت */
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  margin: 0 1rem; /* فاصله افقی بین لینک‌ها */
+  transition: all 0.3s ease;
+}
+
+.links:hover {
+  border-bottom: 2px solid red;
+}
+
+/* لینک‌های موبایل */
+.linksMobile {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem; /* افزایش اندازه فونت */
+  color: white;
+  margin-bottom: 2.5rem; /* فاصله عمودی بین لینک‌ها */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.linksMobile:hover {
+  color: red;
+  transform: scale(1.05); /* افکت هاور */
+}
+
+/* دکمه لاگ اوت */
+.logoutButton {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem;
+  color: red; /* رنگ قرمز پیش‌فرض */
+  background: none; /* حذف پس‌زمینه */
+  border: none; /* حذف حاشیه */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-bottom: 2.5rem; /* فاصله عمودی مثل بقیه لینک‌ها */
+}
+
+.logoutButton:hover {
+  color: darkred; /* تغییر رنگ در حالت هاور */
+  transform: scale(1.05);
+}
+
+/* استایل overlay برای منوی موبایل */
+.overlayOpen {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 40; /* اورلی بالاتر از محتوای دیگر */
+}
+
+.overlayClose {
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ناوبار */
+/* استایل ناوبار */
+.navbar {
+  position: fixed; /* ناوبار همیشه در بالای صفحه ثابت باقی می‌ماند */
+  top: 0;
+  left: 0;
+  width: 100%; /* عرض کامل صفحه */
+  z-index: 1000; /* بالاتر از سایر عناصر قرار می‌گیرد */
+  background-color: #ffffff; /* پس‌زمینه سفید */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* سایه برای جلوه بهتر */
+  padding: 1.5rem 2rem; /* فضای داخلی ناوبار */
+  height: 5rem; /* ارتفاع مشخص برای ناوبار */
+}
+
+/* فاصله‌گذاری محتوای اصلی */
+.main-content {
+  margin-top: 5rem; /* ایجاد فاصله به اندازه ارتفاع ناوبار */
+}
+
+/* دکمه بستن */
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 60; /* دکمه ضرب بالاتر از overlay */
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+}

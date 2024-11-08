@@ -1,0 +1,53 @@
+/* Footer.module.css */
+
+/* استایل‌های لینک‌ها */
+.footerLink {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: #f3b234; /* رنگ زرد هنگام هاور */
+}
+
+/* استایل‌های آیکون‌های شبکه‌های اجتماعی */
+.socialIcon {
+  color: #ffffff;
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.socialIcon:hover {
+  color: #f3b234; /* رنگ زرد هنگام هاور */
+  transform: scale(1.2); /* بزرگ‌تر شدن آیکون هنگام هاور */
+}
+
+/* تنظیمات کلی برای فوتر */
+footer {
+  background-color: #000000; /* پس‌زمینه مشکی */
+  padding: 2rem 0;
+  color: #ffffff;
+}
+
+footer h1,
+footer h2 {
+  font-weight: bold;
+}
+
+footer p,
+footer ul {
+  font-size: 1rem;
+}
+
+/* تنظیم برای بخش فوتر در سایز‌های کوچک */
+@media (max-width: 768px) {
+  .footerLink,
+  .socialIcon {
+    font-size: 1.5rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}

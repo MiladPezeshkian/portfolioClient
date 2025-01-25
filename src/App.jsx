@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-import Research from "./Pages/Research/Research";
-import Announcements from "./Pages/Anno/Announcements";
-import Publications from "./Pages/publication/Publications";
-import Contact from "./Pages/contact/Contact";
-import CurrentSemester from "./Pages/CurrentSemester/CurrentSemester";
-import PreviousSemester from "./Pages/PreviosSemster/PreviosSemster"; // Corrected import name
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import ErrorPage from "./Pages/Errorpage/ErrorPage";
+import Research from "./Pages/Research/Research.jsx";
+import Announcements from "./Pages/Announcementts/Announcements.jsx";
+import Publications from "./Pages/Publication/Publications.jsx";
+import Contact from "./Pages/Contact/Contact.jsx";
+import CurrentSemester from "./Pages/CurrentSemester/CurrentSemester.jsx";
+import PreviousSemester from "./Pages/PreviosSemster/PreviosSemster.jsx"; // Corrected import name
+import Navbar from "./components/navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import ErrorPage from "./Pages/Errorpage/ErrorPage.jsx";
 
 function App() {
   return (

@@ -132,7 +132,7 @@ const Navbar = () => {
               >
                 <li>
                   <Link
-                    to="/teaching/current"
+                    to="/current"
                     className={styles.mobileDropdownLink}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -141,7 +141,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/teaching/previous"
+                    to="/previous"
                     className={styles.mobileDropdownLink}
                     onClick={() => setIsMenuOpen(false)}
                   >

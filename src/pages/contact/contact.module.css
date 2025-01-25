@@ -1,0 +1,372 @@
+/* Contact.module.css */
+.section {
+  padding: 8rem 2rem;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.particleBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(100, 255, 218, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(100, 255, 218, 0.05) 0%,
+      transparent 50%
+    );
+  animation: particleFlow 20s linear infinite;
+}
+
+@keyframes particleFlow {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px, -1000px -1000px;
+  }
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 6rem;
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  color: var(--teal);
+  display: inline-block;
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.titleUnderline {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.titleUnderline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.title:hover .titleUnderline::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.subtitle {
+  color: var(--dark-gray);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+.form {
+  padding: 3rem;
+  background: #112240;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(2, 12, 27, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.form::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(100, 255, 218, 0.1),
+    transparent
+  );
+  animation: formGlow 6s linear infinite;
+}
+
+@keyframes formGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.formRow {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.formGroup {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 1.2rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(100, 255, 218, 0.2);
+  color: var(--light-gray);
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-bottom-color: var(--teal);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: transparent;
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  color: var(--dark-gray);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label,
+.textarea:focus ~ .label,
+.textarea:not(:placeholder-shown) ~ .label {
+  top: -1.5rem;
+  font-size: 0.9rem;
+  color: var(--teal);
+}
+
+.inputIcon {
+  font-size: 1.2rem;
+  color: var(--teal);
+}
+
+.inputUnderline,
+.textareaUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.input:focus ~ .inputUnderline,
+.textarea:focus ~ .textareaUnderline {
+  transform: scaleX(1);
+}
+
+.textarea {
+  resize: none;
+  min-height: 150px;
+  padding-top: 1.5rem;
+}
+
+.submitBtn {
+  position: relative;
+  background: transparent;
+  border: 2px solid var(--teal);
+  color: var(--teal);
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.submitBtn:hover {
+  background: rgba(100, 255, 218, 0.1);
+  letter-spacing: 0.1em;
+}
+
+.btnHoverEffect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: rgba(100, 255, 218, 0.2);
+  border-radius: 50%;
+  transition: width 0.4s, height 0.4s;
+}
+
+.submitBtn:hover .btnHoverEffect {
+  width: 200px;
+  height: 200px;
+}
+
+.sendIcon {
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover .sendIcon {
+  transform: translateX(5px);
+}
+
+/* Contact Cards */
+.infoContainer {
+  display: grid;
+  gap: 2.5rem;
+  padding: 2rem;
+}
+
+.infoCard {
+  position: relative;
+  background: #112240;
+  padding: 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.infoCard:hover {
+  transform: translateY(-8px);
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(100, 255, 218, 0.1),
+    transparent
+  );
+  animation: cardGlow 6s linear infinite;
+}
+
+@keyframes cardGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+}
+
+.infoTitle {
+  font-size: 1.4rem;
+  color: var(--teal);
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.infoContent {
+  color: var(--dark-gray);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.link {
+  color: var(--teal);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.extension {
+  display: block;
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .container {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .header {
+    margin-bottom: 8rem;
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 1.5rem;
+  }
+
+  .form {
+    padding: 2rem;
+  }
+
+  .infoCard {
+    padding: 2rem;
+  }
+}

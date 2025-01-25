@@ -1,53 +1,220 @@
 /* Footer.module.css */
 
-/* استایل‌های لینک‌ها */
-.footerLink {
-  color: #ffffff;
+:root {
+  --navy: #0a192f;
+  --teal: #64ffda;
+  --light-gray: #ccd6f6;
+  --dark-gray: #8892b0;
+  --transition: 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.footer {
+  position: relative;
+  background: var(--navy);
+  padding: 8rem 2rem 3rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.techPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      transparent 95%,
+      rgba(100, 255, 218, 0.03) 100%
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(100, 255, 218, 0.02) 0px,
+      rgba(100, 255, 218, 0.02) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.titleText {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.titleLine {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+.profileText {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  max-width: 340px;
+}
+
+.navGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.navItem {
+  position: relative;
+  color: var(--light-gray);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(136, 146, 176, 0.1);
+  border-radius: 4px;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
 }
 
-.footerLink:hover {
-  color: #f3b234; /* رنگ زرد هنگام هاور */
+.linkMarker {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--teal);
+  margin-right: 1rem;
+  transition: transform var(--transition);
 }
 
-/* استایل‌های آیکون‌های شبکه‌های اجتماعی */
-.socialIcon {
-  color: #ffffff;
-  transition: transform 0.3s ease, color 0.3s ease;
-  font-size: 1.5rem;
+.navItem:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
 }
 
-.socialIcon:hover {
-  color: #f3b234; /* رنگ زرد هنگام هاور */
-  transform: scale(1.2); /* بزرگ‌تر شدن آیکون هنگام هاور */
+.navItem:hover .linkMarker {
+  transform: scale(1.4);
 }
 
-/* تنظیمات کلی برای فوتر */
-footer {
-  background-color: #000000; /* پس‌زمینه مشکی */
-  padding: 2rem 0;
-  color: #ffffff;
+.contactInfo {
+  display: grid;
+  gap: 1.5rem;
 }
 
-footer h1,
-footer h2 {
-  font-weight: bold;
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-footer p,
-footer ul {
-  font-size: 1rem;
+.contactIcon {
+  width: 24px;
+  height: 24px;
+  fill: var(--teal);
+  flex-shrink: 0;
 }
 
-/* تنظیم برای بخش فوتر در سایز‌های کوچک */
+.contactText {
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contactLink {
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contactLink:hover {
+  color: var(--teal);
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  position: relative;
+}
+
+.copyright::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80%, 600px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--teal) 50%,
+    transparent 100%
+  );
+}
+
+.copyrightText {
+  font-size: 0.85rem;
+  color: white;
+  letter-spacing: 0.05em;
+}
+
+.copyrightDivider {
+  margin: 0 1rem;
+  opacity: 0.8;
+}
+
+.legalLink {
+  color: var(--dark-gray);
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: color var(--transition);
+}
+
+.legalLink:hover {
+  color: var(--teal);
+}
+
 @media (max-width: 768px) {
-  .footerLink,
-  .socialIcon {
-    font-size: 1.5rem;
+  .footer {
+    padding: 5rem 1.5rem 2rem;
   }
 
-  footer p {
-    font-size: 0.9rem;
+  .footerContent {
+    gap: 3rem;
+  }
+
+  .navGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .copyrightText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .copyrightDivider {
+    display: none;
   }
 }

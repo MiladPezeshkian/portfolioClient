@@ -1,55 +1,30 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
-import { AuthProvider } from "./context/AuthContext"; // مطمئن شوید مسیر درست است
-import { UserInfoProvider } from "./context/UserInfoContext.jsx";
-import Spinner from "./components/Spinner/Spinner.jsx";
-
-const Home = lazy(() => import("./pages/Home/Home"));
-
-const Register = lazy(() => import("./pages/Register/Register"));
-const Login = lazy(() => import("./pages/login/Login.jsx"));
-
-const PageNotFound = lazy(() => import("./pages/PageNotFound/PageNotFound"));
-const SingleCategorise = lazy(() => import("./pages/SingleCategorise.jsx"));
-
-const AddAi = lazy(() => import("./pages/AddAi.jsx"));
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
-
-const ErrorPage = lazy(() => import("./pages/ErrorPage"));
-const ForgotPassword = lazy(() => import("./pages/ForgotPassword.jsx"));
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Research from "./Pages/Research/Research";
+import Announcements from "./Pages/Anno/Announcements";
+import Publications from "./Pages/publication/Publications";
+import Contact from "./Pages/contact/Contact";
+import CurrentSemester from "./Pages/CurrentSemester/CurrentSemester";
+import PreviousSemester from "./Pages/PreviosSemster/PreviosSemster"; // Corrected import name
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import ErrorPage from "./Pages/Errorpage/ErrorPage";
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <UserInfoProvider>
-          <Suspense fallback={<Spinner />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/error" element={<ErrorPage />} />
-              <Route path="/forgotPassword" element={<ForgotPassword />} />
-
-              <Route
-                path="/addAi"
-                element={
-                  <ProtectedRoute
-                    component={AddAi}
-                    NavigateTo="login"
-                    Message="PLease Login First"
-                  />
-                }
-              />
-              <Route
-                path="/SingleCategorise/:id"
-                element={<SingleCategorise />}
-              />
-              <Route path="*" element={<PageNotFound />} />
-            </Routes>
-          </Suspense>
-        </UserInfoProvider>
-      </AuthProvider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/announcements" element={<Announcements />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/current" element={<CurrentSemester />} />
+        <Route path="/previous" element={<PreviousSemester />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

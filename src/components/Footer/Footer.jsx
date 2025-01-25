@@ -1,109 +1,142 @@
-// src/components/Footer/Footer.jsx
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faLinkedinIn,
-  faTelegramPlane,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-import style from "./Footer.module.css";
+import styles from "./Footer.module.css";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
-function Footer() {
+const Footer = () => {
+  const footerRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.from(`.${styles.footerSection}`, {
+      duration: 0.8,
+      y: 50,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out",
+    }).from(
+      `.${styles.copyright}`,
+      {
+        duration: 0.6,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    );
+  }, []);
+
   return (
-    <footer className={`${style.footers} bg-black text-white py-12`}>
-      <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 px-6 md:px-12">
-        {/* Logo and Description */}
-        <div>
-          <Link to={"/"}>
-            <h1
-              className="md:text-4xl font-extrabold text-2xl bg-white bg-gradient-to-r from-white via-red-600  to-blue-600 bg-clip-text text-transparent 
-            hover:shadow-slate-400/50"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, white 25%, red 40%,  red 100%)",
-              }}
-            >
-              LoneWalker.AI
-            </h1>
-          </Link>
-          <p className="text-lg mt-2">Best deals on all products</p>
+    <footer className={styles.footer} ref={footerRef}>
+      <div className={styles.techPattern}></div>
+
+      <div className={styles.footerContent}>
+        {/* Academic Profile Section */}
+        <div className={styles.footerSection}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleText}>Academic Profile</span>
+            <span className={styles.titleLine}></span>
+          </h3>
+          <p className={styles.profileText}>
+            Dr. Parastoo Fathi is a distinguished scholar in Computer
+            Engineering specializing in AI systems and software architecture.
+            With 10+ years of academic leadership and 50+ peer-reviewed
+            publications, she drives innovation in computational verification
+            methods.
+          </p>
         </div>
 
-        {/* Navigation Links (Example Sections) */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
-          <ul className="space-y-3 text-lg">
-            <li>
-              <Link to="/" className={style.footerLink}>
-                Home
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/add" className={style.footerLink}>
-                Add New AI
-              </Link>
-            </li>
-          </ul>
+        {/* Quick Links Section */}
+        <div className={styles.footerSection}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleText}>Quick Navigation</span>
+            <span className={styles.titleLine}></span>
+          </h3>
+          <nav aria-label="Footer navigation">
+            <ul className={styles.navGrid}>
+              <li>
+                <Link to="/research" className={styles.navItem}>
+                  <span className={styles.linkMarker}></span>
+                  Research Domains
+                </Link>
+              </li>
+              <li>
+                <Link to="/teaching" className={styles.navItem}>
+                  <span className={styles.linkMarker}></span>
+                  Teaching Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/publications" className={styles.navItem}>
+                  <span className={styles.linkMarker}></span>
+                  Publications
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className={styles.navItem}>
+                  <span className={styles.linkMarker}></span>
+                  Collaboration
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
 
-        {/* Account Links */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Account</h2>
-          <ul className="space-y-3 text-lg">
-            <li>
-              <Link to="/login" className={style.footerLink}>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/signup" className={style.footerLink}>
-                Sign Up
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Social Media Links */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Follow Me In !</h2>
-          <div className="flex flex-col space-y-3 text-lg">
-            <div className="flex items-center space-x-2">
-              <FontAwesomeIcon
-                icon={faInstagram}
-                className={style.socialIcon}
-              />
-              <span>Milad_pezeshkian</span>
+        {/* Contact Section */}
+        <div className={styles.footerSection}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleText}>Academic Contact</span>
+            <span className={styles.titleLine}></span>
+          </h3>
+          <div className={styles.contactInfo}>
+            <div className={styles.contactItem}>
+              <svg className={styles.contactIcon} viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+              <p className={styles.contactText}>
+                Faculty of Engineering
+                <br />
+                University of Kurdistan
+                <br />
+                Sanandaj, Iran
+              </p>
             </div>
-            <div className="flex items-center space-x-2">
-              <FontAwesomeIcon
-                icon={faLinkedinIn}
-                className={style.socialIcon}
-              />
-              <span>Milad Pezeshkian</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <FontAwesomeIcon
-                icon={faTelegramPlane}
-                className={style.socialIcon}
-              />
-              <span>Milad_pezeshkian</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <FontAwesomeIcon icon={faGithub} className={style.socialIcon} />
-              <span>Milad Pezeshkian</span>
+            <div className={styles.contactItem}>
+              <svg className={styles.contactIcon} viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+              </svg>
+              <a
+                href="mailto:parastoofathi@uok.ac.ir"
+                className={styles.contactLink}
+              >
+                parastoofathi@uok.ac.ir
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-12 text-center text-sm">
-        <hr className="border-gray-700 mb-4" />
-        <p>&copy; 2024 LoneWalKeR.AI All rights reserved.</p>
+      {/* Copyright Section */}
+      <div className={styles.copyright}>
+        <p className={styles.copyrightText}>
+          © {new Date().getFullYear()} Dr. Parastoo Fathi
+          <span className={styles.copyrightDivider}>|</span>
+          All academic rights reserved
+          <span className={styles.copyrightDivider}>|</span>
+          <a href="#privacy" className={styles.legalLink}>
+            Research Ethics Policy
+          </a>
+        </p>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

@@ -1,0 +1,109 @@
+/* ErrorPage.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.errorCode {
+  font-size: 15rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 50px rgba(255, 107, 107, 0.3);
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.homeButton {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.homeButton:hover {
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  transform: translateY(-2px);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 107, 107, 0.6);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .errorCode {
+    font-size: 8rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .homeButton {
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorCode {
+    font-size: 6rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .homeButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,273 @@
+/* Modern Teal-Blue Palette */
+:root {
+  --deep-navy: #0a192f;
+  --tech-teal: #64ffda;
+  --accent-blue: #1f4068;
+  --text-primary: #ccd6f6;
+  --text-secondary: #cbd2e6;
+}
+
+/* Base Structure */
+.header {
+  background: var(--deep-navy);
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 2rem;
+  background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)),
+    url("/imgs/ai_photo.webp") center/cover;
+}
+
+.techGrid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(var(--accent-blue) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-blue) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.08;
+  animation: gridScroll 40s linear infinite;
+}
+
+/* Key Animations */
+@keyframes gridScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -40px -40px;
+  }
+}
+
+@keyframes titleEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Content Layout */
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+}
+
+.textPanel {
+  order: 2;
+}
+
+.visualPanel {
+  order: 1;
+}
+
+/* Typography */
+.titleGroup {
+  margin-bottom: 2.5rem;
+  animation: titleEntrance 0.8s ease-out;
+}
+
+.name {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--tech-teal);
+  letter-spacing: 0.03em;
+}
+
+.titleLine {
+  height: 2px;
+  background: var(--tech-teal);
+  width: 80px;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.titleLine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  background: var(--text-primary);
+  animation: lineExpand 1.2s ease-in-out;
+}
+
+/* About Section */
+.aboutPanel {
+  border-left: 3px solid var(--tech-teal);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  animation: titleEntrance 0.8s ease-out 0.3s backwards;
+}
+
+.aboutTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--tech-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.aboutText {
+  font-size: 1.45rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+/* Profile Image */
+.profileFrame {
+  position: relative;
+  max-width: 480px;
+  border-radius: 4px;
+  overflow: hidden;
+  animation: titleEntrance 0.8s ease-out 0.6s backwards;
+  cursor: pointer;
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: grayscale(20%) contrast(110%);
+  transition: filter 0.4s ease;
+}
+
+.expertiseBadge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--tech-teal);
+  color: var(--deep-navy);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* CTA Elements */
+.ctaGroup {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.primaryCta {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--tech-teal);
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+.ctaUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--tech-teal);
+  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.primaryCta:hover .ctaUnderline {
+  width: 100%;
+}
+
+.secondaryCta {
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid var(--tech-teal);
+  color: var(--tech-teal);
+  padding: 0.8rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.secondaryCta:hover {
+  background: rgba(100, 255, 218, 0.2);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .contentWrapper {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .textPanel {
+    order: 1;
+  }
+
+  .visualPanel {
+    order: 2;
+  }
+
+  .name {
+    font-size: 3.4rem;
+  }
+
+  .role {
+    font-size: 1.4rem;
+  }
+
+  .profileFrame:hover .profileImage {
+    filter: grayscale(0%) contrast(120%);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 3rem 1.5rem;
+  }
+
+  .name {
+    font-size: 2.2rem;
+  }
+
+  .role {
+    font-size: 1.1rem;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    text-align: center;
+  }
+}

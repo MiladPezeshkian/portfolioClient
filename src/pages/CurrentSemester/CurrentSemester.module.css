@@ -1,0 +1,441 @@
+/* CurrentSemester.module.css */
+.section {
+  padding: 4rem 1rem;
+  background: #0a192f;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Desktop Styles */
+.headerContainer {
+  max-width: 1440px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+
+.header {
+  background: #112240;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(2, 12, 27, 0.3);
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.titleIcon {
+  font-size: 2.8rem;
+  color: #64ffda;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(100, 255, 218, 0.15));
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mainTitle {
+  font-size: 2.4rem;
+  color: #ccd6f6;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.subTitle {
+  font-size: 1.2rem;
+  color: #8892b0;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.tableContainer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.timetable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #112240;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(2, 12, 27, 0.25);
+}
+
+.timeColumn {
+  width: 160px;
+  background: linear-gradient(145deg, #020c1b 0%, #0a192f 100%);
+  vertical-align: middle;
+}
+
+.columnHeader {
+  padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #64ffda;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.columnIcon {
+  font-size: 1.4rem;
+}
+
+.dayHeader {
+  padding: 1.8rem;
+  background: rgba(100, 255, 218, 0.05);
+  border-bottom: 2px solid rgba(100, 255, 218, 0.1);
+  min-width: 140px;
+}
+
+.dayHeaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dayAbbr {
+  font-size: 1.2rem;
+  color: #64ffda;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dayStatus {
+  font-size: 0.85rem;
+  color: #495174;
+  font-weight: 500;
+}
+
+.tableRow {
+  transition: all 0.3s ease;
+}
+
+.tableRow:hover {
+  background: rgba(100, 255, 218, 0.02);
+}
+
+.timeCell {
+  padding: 1.8rem;
+  border-right: 2px solid #233554;
+  border-bottom: 1px solid #233554;
+}
+
+.timeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #64ffda;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.timeIcon {
+  font-size: 1.4rem;
+}
+
+.courseCell {
+  padding: 1.5rem;
+  border-right: 1px solid #233554;
+  border-bottom: 1px solid #233554;
+  vertical-align: top;
+}
+
+.cellContent {
+  height: 100%;
+  min-height: 140px;
+}
+
+.courseCard {
+  background: linear-gradient(145deg, #0a192f 0%, #112240 100%);
+  border-radius: 12px;
+  padding: 1.8rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  transition: all 0.3s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(100, 255, 218, 0.15);
+}
+
+.courseHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.courseIcon {
+  font-size: 1.8rem;
+  color: #64ffda;
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+}
+
+.courseInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.courseTitle {
+  font-size: 1.3rem;
+  color: #ccd6f6;
+  margin: 0 0 0.8rem;
+  font-weight: 600;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.courseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #8892b0;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.metaIcon {
+  font-size: 1.1rem;
+  color: #64ffda;
+  flex-shrink: 0;
+}
+
+.professorBadge {
+  background: rgba(100, 255, 218, 0.1);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  margin-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #64ffda;
+  width: fit-content;
+}
+
+.professorIcon {
+  font-size: 1.1rem;
+}
+
+.noClass {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #495174;
+  padding: 2rem;
+}
+
+.slashIcon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.noClassText {
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.weekend {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Mobile Styles */
+.mobileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobileTimeCard {
+  background: #112240;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(2, 12, 27, 0.1);
+  overflow: hidden;
+}
+
+.mobileTimeHeader {
+  padding: 1.2rem;
+  background: rgba(100, 255, 218, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #64ffda;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.mobileTimeIcon {
+  font-size: 1.4rem;
+}
+
+.mobileDayCard {
+  padding: 1rem;
+  border-bottom: 1px solid #233554;
+}
+
+.mobileDayHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mobileDayLabel {
+  color: #ccd6f6;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.mobileDayStatus {
+  color: #495174;
+  font-size: 0.85rem;
+}
+
+.mobileCourseCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: rgba(100, 255, 218, 0.05);
+  border-radius: 8px;
+}
+
+.mobileCourseContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.mobileCourseIcon {
+  font-size: 1.4rem;
+  color: #64ffda;
+  margin-top: 0.3rem;
+}
+
+.mobileCourseTitle {
+  color: #ccd6f6;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.mobileCourseMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8892b0;
+  font-size: 0.9rem;
+}
+
+.mobileMetaIcon {
+  font-size: 1rem;
+  color: #64ffda;
+}
+
+.mobileProfessor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64ffda;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
+
+.mobileProfessorIcon {
+  font-size: 1rem;
+}
+
+.mobileNoClass {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #495174;
+  padding: 1rem;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.mobileSlashIcon {
+  font-size: 1.4rem;
+  opacity: 0.5;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 1.5rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .subTitle {
+    font-size: 1.1rem;
+  }
+
+  .courseTitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .timetable {
+    display: none;
+  }
+
+  .section {
+    padding: 2rem 0.5rem;
+  }
+
+  .header {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .titleIcon {
+    font-size: 2rem;
+  }
+
+  .mainTitle {
+    font-size: 1.6rem;
+  }
+
+  .subTitle {
+    font-size: 0.9rem;
+  }
+
+  .mobileTimeHeader {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .mobileCourseTitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileContainer {
+    display: none;
+  }
+}

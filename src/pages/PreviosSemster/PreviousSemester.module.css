@@ -1,0 +1,150 @@
+/* PreviousSemester.module.css */
+.container {
+  padding: 8rem 2rem 4rem;
+  background: #0a192f;
+  min-height: 100vh;
+}
+
+.mainTitle {
+  color: #ccd6f6;
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.subTitle {
+  display: block;
+  color: #8892b0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  letter-spacing: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.card {
+  background: #112240;
+  border-radius: 20px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(2, 12, 27, 0.3);
+}
+
+.card.active {
+  border-color: #64ffda;
+  background: linear-gradient(145deg, #0a192f 0%, #112240 100%);
+}
+
+.yearBadge {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.year {
+  color: #64ffda;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.season {
+  color: #8892b0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.students,
+.coursesCount {
+  text-align: center;
+}
+
+.number {
+  display: block;
+  color: #ccd6f6;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  color: #8892b0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coursesList {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #233554;
+}
+
+.coursesList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.coursesList li {
+  color: #ccd6f6;
+  padding: 0.8rem 1rem;
+  margin: 0.5rem 0;
+  background: rgba(100, 255, 218, 0.05);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.coursesList li:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 6rem 1rem 2rem;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .year {
+    font-size: 2rem;
+  }
+}

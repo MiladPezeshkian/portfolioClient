@@ -20,7 +20,7 @@ const Announcements = lazy(() =>
 const Articles = lazy(() => import("./pages/Articles/Articles"));
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const CurrentSemester = lazy(() =>
-  import("./pages/currentSemester/CurrentSemester")
+  import("./pages/CurrentSemester/CurrentSemester")
 );
 const PreviousSemester = lazy(() =>
   import("./pages/PreviosSemster/PreviosSemster")

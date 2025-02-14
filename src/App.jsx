@@ -18,9 +18,9 @@ const Announcements = lazy(() =>
   import("./pages/Announcementts/Announcements")
 );
 const Articles = lazy(() => import("./pages/Articles/Articles"));
-const Contact = lazy(() => import("./pages/Contact/Contact"));
+const Contact = lazy(() => import("./pages/contact/Contact"));
 const CurrentSemester = lazy(() =>
-  import("./pages/CurrentSemester/CurrentSemester")
+  import("./pages/currentSemester/CurrentSemester")
 );
 const PreviousSemester = lazy(() =>
   import("./pages/PreviosSemster/PreviosSemster")

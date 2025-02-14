@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Logo from "../Navbar/Logo.jsx";
+import Logo from "./Logo.jsx";
 import NavLinks from "./NavLinks.jsx";
 import MobileMenu from "./MobileMenu.jsx";
 import styles from "./style.module.css";

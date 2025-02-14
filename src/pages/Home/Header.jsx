@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <div className={style.textPanel}>
           <div className={style.titleGroup}>
             <h1 className={style.title}>
-              <span className={style.name}>Dr. Parastoo Fathi</span>
+              <span className={style.name}>Dr. ParastoFathi</span>
               <span className={style.role}>
                 Professor of Artificial Intelligence
               </span>
@@ -35,11 +36,13 @@ function Header() {
           </div>
 
           <div className={style.ctaGroup}>
-            <button className={style.primaryCta}>
+            <a href="www.google.com" className={style.primaryCta}>
               Academic Portfolio
               <span className={style.ctaUnderline} />
-            </button>
-            <button className={style.secondaryCta}>Recent Publications</button>
+            </a>
+            <Link className={style.secondaryCta} to="articles">
+              Recent Publications
+            </Link>
           </div>
         </div>
 

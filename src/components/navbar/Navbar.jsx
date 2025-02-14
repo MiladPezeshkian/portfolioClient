@@ -1,193 +1,64 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Logo from "../Navbar/Logo.jsx";
+import NavLinks from "./NavLinks";
+import MobileMenu from "./MobileMenu";
 import styles from "./style.module.css";
+import useAuth from "../../hooks/useAuth.jsx";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const { isLogin, logout } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
         setIsMenuOpen(false);
-        setIsMobileDropdownOpen(false);
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleLogout = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://drfathiserver.onrender.com/api/v1/professors/logout`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) throw new Error("Logout failed");
+      logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <nav className={styles.navbar} aria-label="Main navigation">
-      <div className={styles.container}>
-        {/* Animated Logo */}
-        <Link to="/" className={styles.logo}>
-          <span className={styles.logoPart}>Dr.</span>
-          <span className={styles.logoPart}>Parastoo</span>
-          <span className={styles.logoPart}>Fathi</span>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <ul className={styles.navList}>
-          <li>
-            <Link to="/" className={styles.navLink}>
-              Home
-            </Link>
-          </li>
-
-          <li
-            className={styles.dropdownItem}
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-            <button
-              className={styles.navLink}
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="true"
-            >
-              Teaching
-              <span className={styles.dropdownArrow} aria-hidden="true" />
-            </button>
-            <ul
-              className={`${styles.dropdownMenu} ${
-                isDropdownOpen ? styles.show : ""
-              }`}
-              role="menu"
-            >
-              <li>
-                <Link to="/current" className={styles.dropdownLink}>
-                  Current Semester
-                </Link>
-              </li>
-              <li>
-                <Link to="/previous" className={styles.dropdownLink}>
-                  Previous Semester
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link to="/research" className={styles.navLink}>
-              Research
-            </Link>
-          </li>
-          <li>
-            <Link to="/publications" className={styles.navLink}>
-              Publications
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className={styles.navLink}>
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link to="/announcements" className={styles.navLink}>
-              Announcements
-            </Link>
-          </li>
-        </ul>
-
-        {/* Mobile Navigation */}
-        <button
-          className={`${styles.menuToggle} ${isMenuOpen ? styles.active : ""}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span className={styles.menuBar} />
-          <span className={styles.menuBar} />
-          <span className={styles.menuBar} />
-        </button>
-
-        <div
-          className={`${styles.mobileNav} ${isMenuOpen ? styles.active : ""}`}
-        >
-          <ul>
-            <li>
-              <Link
-                to="/"
-                className={styles.mobileLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-            </li>
-
-            <li>
-              <button
-                className={`${styles.mobileLink} ${styles.dropdownTrigger}`}
-                onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                aria-expanded={isMobileDropdownOpen}
-              >
-                Teaching
-                <span className={styles.dropdownChevron} aria-hidden="true" />
-              </button>
-              <ul
-                className={`${styles.mobileDropdown} ${
-                  isMobileDropdownOpen ? styles.show : ""
-                }`}
-              >
-                <li>
-                  <Link
-                    to="/current"
-                    className={styles.mobileDropdownLink}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Current Semester
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/previous"
-                    className={styles.mobileDropdownLink}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Previous Semester
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link
-                to="/research"
-                className={styles.mobileLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Research
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/publications"
-                className={styles.mobileLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Publications
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className={styles.mobileLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/announcements"
-                className={styles.mobileLink}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Announcements
-              </Link>
-            </li>
-          </ul>
+      {/* نمایش لودینگ اسپینر به صورت overlay زمانی که در حال بارگذاری هستیم */}
+      {loading && (
+        <div className={styles.loadingOverlay}>
+          <LoadingSpinner />
         </div>
+      )}
+      <div className={styles.container}>
+        <Logo />
+        <NavLinks isLogin={isLogin} handleLogout={handleLogout} />
+        <MobileMenu
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          isLogin={isLogin}
+          handleLogout={handleLogout}
+        />
       </div>
     </nav>
   );

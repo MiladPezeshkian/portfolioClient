@@ -265,6 +265,9 @@
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.4s ease;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .infoCard:hover {
@@ -343,6 +346,56 @@
   margin-top: 0.5rem;
 }
 
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 1.5rem;
+  }
+
+  .particleBackground {
+    animation: none !important;
+    background: transparent !important;
+  }
+
+  .form::before,
+  .cardGlow {
+    animation: none !important;
+    display: none;
+  }
+
+  .form {
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(2, 12, 27, 0.2);
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .submitBtn:hover {
+    background: transparent;
+    letter-spacing: normal;
+  }
+
+  .btnHoverEffect {
+    display: none;
+  }
+
+  .infoCard:hover {
+    transform: none;
+  }
+
+  .inputUnderline,
+  .textareaUnderline {
+    transition-duration: 0.2s;
+  }
+
+  .titleUnderline::after {
+    transition-duration: 0.4s;
+  }
+}
+
 @media (min-width: 992px) {
   .container {
     grid-template-columns: 1.2fr 1fr;
@@ -354,19 +407,5 @@
 
   .title {
     font-size: 3.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: 6rem 1.5rem;
-  }
-
-  .form {
-    padding: 2rem;
-  }
-
-  .infoCard {
-    padding: 2rem;
   }
 }

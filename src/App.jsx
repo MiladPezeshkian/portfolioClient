@@ -1,32 +1,119 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home.jsx";
-import Research from "./Pages/Research/Research.jsx";
-import Announcements from "./Pages/Announcementts/Announcements.jsx";
-import Publications from "./Pages/Publication/Publications.jsx";
-import Contact from "./Pages/Contact/Contact.jsx";
-import CurrentSemester from "./Pages/CurrentSemester/CurrentSemester.jsx";
-import PreviousSemester from "./Pages/PreviosSemster/PreviosSemster.jsx"; // Corrected import name
-import Navbar from "./components/navbar/Navbar.jsx";
-import Footer from "./components/Footer/Footer.jsx";
-import ErrorPage from "./Pages/Errorpage/ErrorPage.jsx";
+import React, { lazy, Suspense, useContext, memo } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import ErrorPage from "./Pages/404ErrorPage/ErrorPage";
+import AuthContext, { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-function App() {
+// ایجاد نمونه QueryClient
+const queryClient = new QueryClient();
+
+// بارگذاری تنبل کامپوننت‌ها
+const Home = lazy(() => import("./Pages/Home/Home"));
+const Announcements = lazy(() =>
+  import("./Pages/Announcementts/Announcements")
+);
+const Articles = lazy(() => import("./Pages/Articles/Articles"));
+const Contact = lazy(() => import("./Pages/Contact/Contact"));
+const CurrentSemester = lazy(() =>
+  import("./Pages/CurrentSemester/CurrentSemester")
+);
+const PreviousSemester = lazy(() =>
+  import("./Pages/PreviosSemster/PreviosSemster")
+);
+const Login = lazy(() => import("./Pages/Login/Login"));
+
+// بارگذاری تنبل بخش ادمین
+const AdminDashboard = lazy(() => import("./Pages/Admin/AdminDashboard"));
+const HomeControl = lazy(() =>
+  import("./Pages/Admin/ChangingPannel/Home/HomeControl")
+);
+const AnnoControl = lazy(() =>
+  import("./Pages/Admin/ChangingPannel/AnnouncementsControl/AnnoControl")
+);
+const CurrentSemsterControl = lazy(() =>
+  import(
+    "./Pages/Admin/ChangingPannel/CurrentSemester/CurrentSemsterController"
+  )
+);
+const PreviosSemesterControl = lazy(() =>
+  import("./Pages/Admin/ChangingPannel/PreviosSemster/PreSemsterControl")
+);
+const ArticlesControler = lazy(() =>
+  import("./Pages/Admin/ChangingPannel/Articles/ArticlesControls")
+);
+
+const ContactControl = lazy(() =>
+  import("./Pages/Admin/ChangingPannel/MessageAndAnswer/MessageAndAnswer")
+);
+
+// بهینه‌سازی Navbar و Footer با memo
+const MemoizedNavbar = memo(Navbar);
+const MemoizedFooter = memo(Footer);
+
+// کامپوننت مدیریت روت‌ها
+const AppRouter = () => {
+  const { isLogin } = useContext(AuthContext);
+
+  if (isLogin === null) {
+    return <LoadingSpinner isFullPage={true} />;
+  }
+
+  return (
+    <Routes>
+      {/* روت‌های عمومی */}
+      <Route path="/" element={<Home />} />
+      <Route path="/announcements" element={<Announcements />} />
+      <Route path="/articles" element={<Articles />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/current" element={<CurrentSemester />} />
+      <Route path="/previous" element={<PreviousSemester />} />
+      <Route path="/login" element={<Login />} />
+
+      {/* روت‌های ادمین (محافظت‌شده) */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/admin-dashboard/" element={<AdminDashboard />}>
+          <Route index element={<Navigate to="home-control" replace />} />
+          <Route path="home-control" element={<HomeControl />} />
+          <Route path="announcements-control" element={<AnnoControl />} />
+          <Route path="current-semester" element={<CurrentSemsterControl />} />
+          <Route
+            path="previous-semesters"
+            element={<PreviosSemesterControl />}
+          />
+          <Route path="Articles" element={<ArticlesControler />} />
+          <Route path="messages" element={<ContactControl />} />
+        </Route>
+      </Route>
+
+      {/* صفحه خطای 404 */}
+      <Route path="/404" element={<ErrorPage />} />
+      <Route path="*" element={<Navigate to="/404" replace />} />
+    </Routes>
+  );
+};
+
+// کامپوننت اصلی
+const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/announcements" element={<Announcements />} />
-        <Route path="/publications" element={<Publications />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/current" element={<CurrentSemester />} />
-        <Route path="/previous" element={<PreviousSemester />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <Footer />
+      <ErrorBoundary>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <MemoizedNavbar />
+            <Suspense fallback={<LoadingSpinner isFullPage={true} />}>
+              <AppRouter />
+            </Suspense>
+            <MemoizedFooter />
+          </QueryClientProvider>
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

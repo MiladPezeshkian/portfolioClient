@@ -1,28 +1,41 @@
 /* Announcements.module.css */
+
+/* =========================
+   تعریف متغیرهای اصلی (Root Variables)
+   ========================= */
 :root {
   --navy: #0a192f;
-  --teal: #64ffda;
+  --teal: #64ffda; /* رنگ به‌روزرسانی‌ها */
   --light-gray: #ccd6f6;
   --dark-gray: #8892b0;
-  --error: #ff5252;
-  --warning: #ffb74d;
-  --success: #4caf50;
+  --error: #ff5252; /* رنگ هشدار */
+  --warning: #ffb74d; /* رنگ نگهداری و تعمیرات */
+  --success: #4caf50; /* رنگ ویژگی‌های جدید */
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-primary: "Helvetica Neue", Arial, sans-serif;
 }
 
+/* =========================
+     استایل‌های اصلی بخش
+     ========================= */
 .section {
-  padding: 8rem 2rem;
-  background: var(--navy);
   position: relative;
   overflow: hidden;
+  padding: 8rem 2rem;
+  background-color: var(--navy);
 }
 
+/* -------------------------
+     پس‌زمینه گرادیان متحرک
+     ------------------------- */
 .gradientBackground {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
+  pointer-events: none;
+  will-change: transform;
   background: radial-gradient(
       circle at 10% 20%,
       rgba(100, 255, 218, 0.05) 0%,
@@ -45,21 +58,27 @@
   }
 }
 
+/* -------------------------
+     کانتینر مرکزی
+     ------------------------- */
 .container {
+  position: relative;
+  z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
-  z-index: 1;
 }
 
-/* Header Styles */
+/* =========================
+     استایل‌های هدر
+     ========================= */
 .header {
   text-align: center;
   margin-bottom: 6rem;
 }
 
 .title {
+  font-family: var(--font-primary);
   font-size: 2.8rem;
   color: var(--light-gray);
   margin-bottom: 1.5rem;
@@ -75,12 +94,13 @@
 .titleUnderline {
   width: 120px;
   height: 3px;
-  background: var(--teal);
+  background-color: var(--teal);
   margin: 1rem auto 0;
   border-radius: 2px;
 }
 
 .subtitle {
+  font-family: var(--font-primary);
   color: var(--dark-gray);
   font-size: 1.3rem;
   line-height: 1.6;
@@ -88,21 +108,27 @@
   margin: 0 auto;
 }
 
-/* Card Styles */
+/* =========================
+     استایل‌های کارت‌ها
+     ========================= */
+
+/* شبکه‌بندی کارت‌ها */
 .grid {
   display: grid;
-  gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
 }
 
+/* استایل کارت */
 .card {
-  background: #112240;
+  background-color: #112240;
+  border: 1px solid rgba(100, 255, 218, 0.15);
   border-radius: 20px;
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
-  transition: transform var(--transition);
-  border: 1px solid rgba(100, 255, 218, 0.15);
+  transform: translateY(0);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .card:hover {
@@ -110,32 +136,43 @@
   box-shadow: 0 12px 40px rgba(2, 12, 27, 0.3);
 }
 
-/* Category Badge */
+/* بنر دسته‌بندی (Category Badge) */
 .categoryBadge {
   position: absolute;
   top: 1.2rem;
   right: -3rem;
-  padding: 0.8rem 3.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transform: rotate(45deg);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  letter-spacing: 0.05em;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 12px;
+  color: #fff;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform var(--transition);
+}
+
+.categoryBadge:hover {
+  transform: rotate(45deg) scale(1.05);
 }
 
 .badgeText {
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 18rem;
 }
 
-/* Card Content */
+/* محتوا و سربرگ کارت */
 .cardHeader {
   margin-bottom: 1.8rem;
 }
 
 .cardTitle {
+  font-family: var(--font-primary);
   font-size: 1.7rem;
   color: var(--light-gray);
   line-height: 1.4;
@@ -162,26 +199,28 @@
   margin-bottom: 2.5rem;
 }
 
-/* Like Button */
+/* -------------------------
+     دکمه تعامل (Like Button)
+     ------------------------- */
 .interactionBar {
-  border-top: 1px solid rgba(100, 255, 218, 0.1);
   padding-top: 1.8rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
 }
 
 .likeButton {
-  background: rgba(100, 255, 218, 0.08);
-  color: var(--teal);
-  padding: 0.9rem 2rem;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 1rem;
+  background-color: rgba(100, 255, 218, 0.08);
+  color: var(--teal);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
   font-size: 1.1rem;
-  transition: all var(--transition);
+  transition: transform var(--transition), background-color var(--transition);
 }
 
 .likeButton:hover {
-  background: rgba(100, 255, 218, 0.15);
+  background-color: rgba(100, 255, 218, 0.15);
   transform: translateY(-2px);
 }
 
@@ -217,15 +256,17 @@
   }
 }
 
-/* Loading States */
+/* =========================
+     استایل‌های حالت بارگذاری (Skeleton)
+     ========================= */
 .loadingGrid {
   display: grid;
-  gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
 }
 
 .skeletonCard {
-  background: #112240;
+  background-color: #112240;
   border-radius: 20px;
   padding: 2.5rem;
 }
@@ -234,19 +275,25 @@
   height: 2.2rem;
   width: 75%;
   margin-bottom: 1.8rem;
+  background-color: var(--dark-gray);
+  border-radius: 4px;
 }
 
 .skeletonBody {
   height: 8rem;
+  background-color: var(--dark-gray);
+  border-radius: 4px;
 }
 
-/* Error States */
+/* =========================
+     استایل‌های حالت خطا
+     ========================= */
 .errorContainer {
-  background: var(--error);
+  background-color: var(--error);
   border-radius: 20px;
   padding: 3rem;
   text-align: center;
-  color: white;
+  color: #fff;
 }
 
 .errorIcon {
@@ -256,11 +303,13 @@
 }
 
 .errorTitle {
+  font-family: var(--font-primary);
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .errorMessage {
+  font-family: var(--font-primary);
   font-size: 1.1rem;
 }
 
@@ -274,7 +323,11 @@
   }
 }
 
-/* Responsive Design */
+/* =========================
+     استایل‌های رسپانسیو
+     ========================= */
+
+/* برای تبلت‌ها و لپ‌تاپ‌های کوچک‌تر */
 @media (max-width: 1024px) {
   .title {
     font-size: 2.5rem;
@@ -284,6 +337,7 @@
   }
 }
 
+/* برای موبایل‌ها */
 @media (max-width: 768px) {
   .section {
     padding: 6rem 1.5rem;
@@ -296,5 +350,25 @@
   }
   .cardTitle {
     font-size: 1.5rem;
+  }
+}
+
+/* برای دستگاه‌های خیلی کوچک */
+@media (max-width: 480px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .interactionBar {
+    padding-top: 1.5rem;
+  }
+  .likeButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 }

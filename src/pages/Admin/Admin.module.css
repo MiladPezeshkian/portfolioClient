@@ -1,0 +1,246 @@
+/* Admin.module.css */
+
+/* ریشه اصلی بخش ادمین */
+.adminContainer {
+  /* متغیرهای CSS فقط در این بخش تعریف می‌شوند */
+  --primary-bg: #0a192f;
+  --accent: #64ffda;
+  --secondary-text: #8892b0;
+  --card-bg: rgba(17, 34, 64, 0.98);
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 80px;
+  --transition-speed: 0.3s;
+
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* تمام استایل‌های مربوط به ادمین زیر این کلاس محصور می‌شوند */
+.adminContainer .sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--card-bg);
+  backdrop-filter: blur(25px);
+  border-right: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 12px 32px rgba(2, 12, 27, 0.3);
+  position: fixed;
+  z-index: 1000;
+  transition: width var(--transition-speed) ease;
+  overflow: hidden;
+}
+
+.adminContainer .collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.adminContainer .sidebar.mobileActive {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.adminContainer .sidebarHeader {
+  padding: 2rem 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.adminContainer .logoContainer {
+  margin-bottom: 2rem;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.adminContainer .collapsed .logoContainer {
+  opacity: 0;
+}
+
+.adminContainer .logo {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.adminContainer .toggleButton {
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all var(--transition-speed) ease;
+}
+
+.adminContainer .toggleButton:hover {
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.adminContainer .contentArea {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  margin-top: 3rem;
+  padding: 3rem 2rem;
+  min-height: 100vh;
+  transition: margin-left var(--transition-speed) ease;
+}
+
+.adminContainer .expanded {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+.adminContainer .contentWrapper {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 24px 64px rgba(2, 12, 27, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.adminContainer .navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1rem;
+}
+
+.adminContainer .navItem {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem;
+  color: var(--secondary-text);
+  border-radius: 0.75rem;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.adminContainer .navItem:hover {
+  background: rgba(100, 255, 218, 0.08);
+  color: var(--accent);
+}
+
+.adminContainer .active {
+  background: rgba(100, 255, 218, 0.15);
+  color: var(--accent);
+}
+
+.adminContainer .navIcon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.adminContainer .navLabel {
+  transition: opacity var(--transition-speed) ease;
+}
+
+.adminContainer .collapsed .navLabel {
+  opacity: 0;
+}
+
+.adminContainer .activeIndicator {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.adminContainer .active .activeIndicator {
+  opacity: 1;
+}
+
+/* استایل‌های موبایل */
+@media (max-width: 768px) {
+  .adminContainer {
+    flex-direction: column;
+  }
+
+  .adminContainer .sidebar {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    z-index: 1000;
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+  }
+
+  .adminContainer .sidebar.mobileActive {
+    top: 0;
+  }
+
+  .adminContainer .contentArea {
+    margin-left: 0;
+    width: 100%;
+    padding: 2rem 1rem;
+    transition: padding 0.3s ease;
+  }
+
+  .adminContainer .mobileMenuTrigger {
+    display: block;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1001;
+    background: var(--accent);
+    padding: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(100, 255, 218, 0.3);
+    color: var(--primary-bg);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .adminContainer .mobileMenuTrigger:hover {
+    transform: scale(1.1);
+  }
+
+  .adminContainer .sidebarHeader {
+    padding: 1.5rem;
+    border-bottom: none;
+  }
+
+  .adminContainer .navMenu {
+    padding: 1rem;
+  }
+
+  .adminContainer .navItem {
+    padding: 1.2rem;
+    border-radius: 1rem;
+  }
+}
+
+.adminContainer .mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}

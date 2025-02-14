@@ -1,0 +1,64 @@
+.toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.success {
+  background-color: #28a745;
+}
+
+.error {
+  background-color: #dc3545;
+}
+
+.warning {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.info {
+  background-color: #17a2b8;
+}
+
+.message {
+  flex: 1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.closeButton:hover {
+  opacity: 0.7;
+}
+
+.successIcon {
+  color: #d4edda;
+}
+
+.errorIcon {
+  color: #f8d7da;
+}
+
+.warningIcon {
+  color: #fff3cd;
+}
+
+.infoIcon {
+  color: #d1ecf1;
+}

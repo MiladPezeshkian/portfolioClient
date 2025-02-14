@@ -1,0 +1,109 @@
+/* HomeController.module.css */
+:root {
+  --dark-bg: #0f172a;
+  --dark-surface: #1e293b;
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --success: #34d399;
+  --error: #f87171;
+  --border: #334155;
+  --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.adminPanel {
+  background-color: var(--dark-bg);
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)),
+    url("/imgs/ai_photo.webp") center/cover;
+  color: var(--text-primary);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--dark-surface);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--dark-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+.errorInput {
+  border-color: var(--error);
+}
+
+.errorMessage {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.successMessage {
+  color: var(--success);
+  background: rgba(52, 211, 153, 0.1);
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}

@@ -268,3 +268,325 @@
     display: none;
   }
 }
+Auth Section .authSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.profileLink {
+  color: var(--light-gray);
+  transition: color var(--transition);
+}
+
+.profileIcon {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 65, 65, 0.1);
+}
+
+/* Mobile Auth */
+.mobileAuth {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(136, 146, 176, 0.1);
+}
+
+.mobileProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: var(--light-gray);
+}
+
+.mobileLogout {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+.mobileLink {
+  display: block;
+  color: var(--light-gray);
+  text-decoration: none;
+  padding: 1rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(136, 146, 176, 0.1);
+  transition: color var(--transition);
+}
+
+.mobileLink:hover {
+  color: var(--teal);
+}
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(2, 12, 27, 0.3);
+}
+
+.closeBtn::before,
+.closeBtn::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background: var(--teal);
+  transition: transform 0.3s ease;
+}
+
+.closeBtn::before {
+  transform: rotate(45deg);
+}
+
+.closeBtn::after {
+  transform: rotate(-45deg);
+}
+
+/* Hover Effects */
+.closeBtn:hover {
+  background: rgba(255, 65, 65, 0.2);
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 65, 65, 0.2);
+}
+
+.closeBtn:hover::before,
+.closeBtn:hover::after {
+  background: #ff4141;
+  width: 22px;
+}
+
+/* Active State */
+.closeBtn:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* Loading Animation */
+@keyframes closePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 65, 65, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 65, 65, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 65, 65, 0);
+  }
+}
+
+.closeBtn:focus {
+  outline: none;
+  animation: closePulse 1s ease;
+}
+/* Mobile Auth Container */
+.mobileAuth {
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.15);
+  border-radius: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(10, 25, 47, 0.9),
+    rgba(10, 25, 47, 0.7)
+  );
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(2, 12, 27, 0.3);
+}
+
+/* Profile Link Styling */
+.mobileProfile {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  color: var(--light-gray);
+  text-decoration: none;
+  border-radius: 10px;
+  background: rgba(100, 255, 218, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileProfile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(100, 255, 218, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.mobileProfile:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateX(10px);
+}
+
+.mobileProfile:hover::before {
+  left: 100%;
+}
+
+.mobileProfile svg {
+  font-size: 1.6rem;
+  color: var(--teal);
+  transition: transform 0.3s ease;
+}
+
+.mobileProfile:hover svg {
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* Logout Button Styling */
+.mobileLogout {
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  background: transparent;
+  border: 2px solid var(--teal);
+  color: var(--teal);
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileLogout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(100, 255, 218, 0.15),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.mobileLogout:hover {
+  background: rgba(255, 65, 65, 0.1);
+  border-color: #ff4141;
+  color: #ff4141;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 65, 65, 0.2);
+}
+
+.mobileLogout:hover::before {
+  left: 100%;
+}
+
+/* Hover Effects */
+.mobileLogout:active {
+  transform: translateY(0);
+  transition: all 0.1s ease;
+}
+
+/* Glow Animation */
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  }
+}
+
+.mobileLogout:focus {
+  outline: none;
+  animation: buttonGlow 1.5s infinite;
+}
+
+.authSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: rgba(100, 255, 218, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.profileLink:hover {
+  background: rgba(100, 255, 218, 0.1);
+  border-color: var(--teal);
+}
+
+.profileIcon {
+  font-size: 1.4rem;
+  color: var(--teal);
+  margin-right: 0.5rem;
+}
+
+.logoutBtn {
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 65, 65, 0.1);
+  border-color: #ff4141;
+  color: #ff4141;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(255, 65, 65, 0.2);
+}
+
+.logoutBtn:active {
+  transform: translateY(0);
+}

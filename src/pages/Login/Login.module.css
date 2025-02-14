@@ -1,0 +1,236 @@
+/* src/Pages/Login/Login.module.css */
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a192f;
+  padding: 2rem;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.gradient {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+      circle at 30% 40%,
+      rgba(100, 255, 218, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(100, 255, 218, 0.15) 0%,
+      transparent 50%
+    );
+  animation: gradientFlow 35s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(100, 255, 218, 0.4);
+  border-radius: 50%;
+  animation: particleFloat 10s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: rgba(17, 34, 64, 0.98);
+  backdrop-filter: blur(25px);
+  border-radius: 1.5rem;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 24px 64px rgba(2, 12, 27, 0.6);
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.titleMain {
+  display: block;
+  font-size: 2.5rem;
+  color: #64ffda;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.titleSub {
+  display: block;
+  font-size: 1.1rem;
+  color: #8892b0;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  background: rgba(10, 25, 47, 0.8);
+  border: 2px solid rgba(100, 255, 218, 0.2);
+  border-radius: 0.75rem;
+  color: #ccd6f6;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #64ffda;
+  box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.15);
+}
+
+.input::placeholder {
+  color: #8892b0;
+  font-weight: 300;
+}
+
+.errorMessage {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  font-weight: 500;
+}
+
+.submitButton {
+  position: relative;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #64ffda, #00c9a7);
+  border: none;
+  border-radius: 0.75rem;
+  color: #0a192f;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.buttonGlow {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  top: -25%;
+  left: -125%;
+  transform: rotate(25deg);
+  transition: left 0.6s ease-in-out;
+}
+
+.submitButton:hover .buttonGlow {
+  left: 150%;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(10, 25, 47, 0.2);
+  border-top-color: #0a192f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.link {
+  color: #64ffda;
+  text-decoration: none;
+  font-size: 0.95rem;
+  position: relative;
+  padding-bottom: 3px;
+  font-weight: 500;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.serverError {
+  background: #ff475726;
+  color: #ff6b6b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ff475740;
+  font-weight: 500;
+  text-align: center;
+}

@@ -1,55 +1,101 @@
-import { useState } from "react";
+// PreviousSemester.jsx
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SemesterCard from "./SemesterCard";
 import styles from "./PreviousSemester.module.css";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
-const previousSemestersData = [
-  {
-    id: 1,
-    year: 2014,
-    season: "Fall",
-    students: 245,
-    courses: [
-      "Advanced Algorithm Design",
-      "Distributed Systems",
-      "Machine Learning Fundamentals",
-      "Database Optimization",
-      "Cloud Computing Basics",
-    ],
-  },
-  {
-    id: 2,
-    year: 2015,
-    season: "Spring",
-    students: 128,
-    courses: [
-      "Deep Learning Applications",
-      "Big Data Analytics",
-      "Network Security",
-      "IoT Systems Architecture",
-      "Advanced Cloud Patterns",
-    ],
-  },
-  // ... سایر ترم‌ها
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-};
-
-const listItemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: (i) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.1 },
-  }),
-};
+const API_URL = "https://drfathiserver.onrender.com/api/v1/prevSemester";
 
 const PreviousSemester = () => {
+  const [loading, setLoading] = useState(true);
+  const [semesters, setSemesters] = useState([]);
   const [selectedSemester, setSelectedSemester] = useState(null);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    const fetchSemesters = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(API_URL, {
+          signal: abortController.signal,
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("prev", data);
+        // بررسی ساختار داده دریافتی و استخراج آرایه‌ی ترم‌ها
+        let semestersArray = [];
+        if (Array.isArray(data)) {
+          semestersArray = data;
+        } else if (Array.isArray(data.semesters)) {
+          semestersArray = data.semesters;
+        } else if (Array.isArray(data.data)) {
+          semestersArray = data.data;
+        } else {
+          semestersArray = [];
+        }
+        setSemesters(semestersArray);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.error("Failed to fetch semesters:", err);
+          setError(err.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSemesters();
+
+    // لغو درخواست در صورت انصراف (Unmount) کامپوننت
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+
+  // حالت بارگذاری (Loading)
+  if (loading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className={styles.mainTitle}
+        >
+          Academic Archive
+          <span className={styles.subTitle}>Past Semesters Records</span>
+        </motion.h2>
+        <div>
+          <LoadingSpinner />
+        </div>
+      </div>
+    );
+  }
+
+  // حالت خطا (Error)
+  if (error) {
+    return (
+      <div className={styles.errorContainer}>
+        <motion.h2
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className={styles.mainTitle}
+        >
+          Academic Archive
+          <span className={styles.subTitle}>Past Semesters Records</span>
+        </motion.h2>
+        <div className={styles.errorMessage}>
+          <p>Error: {error}</p>
+        </div>
+      </div>
+    );
+  }
+
+  // حالت نمایش داده‌های دریافت شده (Success)
   return (
     <div className={styles.container}>
       <motion.h2
@@ -63,69 +109,17 @@ const PreviousSemester = () => {
 
       <div className={styles.grid}>
         <AnimatePresence>
-          {previousSemestersData.map((semester) => (
-            <motion.div
-              key={semester.id}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              layout
-              className={`${styles.card} ${
-                selectedSemester?.id === semester.id ? styles.active : ""
-              }`}
+          {semesters.map((semester, index) => (
+            <SemesterCard
+              key={index} // استفاده از index به عنوان کلید
+              semester={semester}
+              isActive={selectedSemester?.id === semester.id}
               onClick={() =>
                 setSelectedSemester(
                   selectedSemester?.id === semester.id ? null : semester
                 )
               }
-            >
-              <div className={styles.cardContent}>
-                <div className={styles.yearBadge}>
-                  <span className={styles.year}>{semester.year}</span>
-                  <span className={styles.season}>{semester.season}</span>
-                </div>
-
-                <div className={styles.stats}>
-                  <div className={styles.students}>
-                    <span className={styles.number}>{semester.students}</span>
-                    <span className={styles.label}>Students</span>
-                  </div>
-
-                  <div className={styles.coursesCount}>
-                    <span className={styles.number}>
-                      {semester.courses.length}
-                    </span>
-                    <span className={styles.label}>Courses</span>
-                  </div>
-                </div>
-              </div>
-
-              <AnimatePresence>
-                {selectedSemester?.id === semester.id && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className={styles.coursesList}
-                  >
-                    <ul>
-                      {semester.courses.map((course, index) => (
-                        <motion.li
-                          key={course}
-                          variants={listItemVariants}
-                          custom={index}
-                          initial="hidden"
-                          animate="visible"
-                        >
-                          {course}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+            />
           ))}
         </AnimatePresence>
       </div>

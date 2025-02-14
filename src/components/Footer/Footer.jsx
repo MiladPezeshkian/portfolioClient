@@ -1,40 +1,10 @@
-import { Link } from "react-router-dom";
+// Footer.jsx
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Footer.module.css";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 
 const Footer = () => {
-  const footerRef = useRef(null);
-
-  useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: footerRef.current,
-        start: "top bottom",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    tl.from(`.${styles.footerSection}`, {
-      duration: 0.8,
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out",
-    }).from(
-      `.${styles.copyright}`,
-      {
-        duration: 0.6,
-        y: 30,
-        opacity: 0,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-  }, []);
-
   return (
-    <footer className={styles.footer} ref={footerRef}>
+    <footer className={styles.footer}>
       <div className={styles.techPattern}></div>
 
       <div className={styles.footerContent}>
@@ -112,12 +82,12 @@ const Footer = () => {
               <svg className={styles.contactIcon} viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
               </svg>
-              <a
-                href="mailto:parastoofathi@uok.ac.ir"
-                className={styles.contactLink}
+              <NavLink
+                href="mailto:ParastoFathi@uok.ac.ir"
+                className="text-white"
               >
-                parastoofathi@uok.ac.ir
-              </a>
+                ParastoFathi@uok.ac.ir
+              </NavLink>
             </div>
           </div>
         </div>
@@ -126,7 +96,7 @@ const Footer = () => {
       {/* Copyright Section */}
       <div className={styles.copyright}>
         <p className={styles.copyrightText}>
-          © {new Date().getFullYear()} Dr. Parastoo Fathi
+          © {new Date().getFullYear()} Dr. ParastoFathi
           <span className={styles.copyrightDivider}>|</span>
           All academic rights reserved
           <span className={styles.copyrightDivider}>|</span>

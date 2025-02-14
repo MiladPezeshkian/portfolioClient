@@ -4,7 +4,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
-import ErrorPage from "./Pages/404ErrorPage/ErrorPage";
+import ErrorPage from "./pages/404ErrorPage/ErrorPage";
 import AuthContext, { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -13,42 +13,42 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 // بارگذاری تنبل کامپوننت‌ها
-const Home = lazy(() => import("./Pages/Home/Home"));
+const Home = lazy(() => import("./pages/Home/Home"));
 const Announcements = lazy(() =>
-  import("./Pages/Announcementts/Announcements")
+  import("./pages/Announcementts/Announcements")
 );
-const Articles = lazy(() => import("./Pages/Articles/Articles"));
-const Contact = lazy(() => import("./Pages/Contact/Contact"));
+const Articles = lazy(() => import("./pages/Articles/Articles"));
+const Contact = lazy(() => import("./pages/Contact/Contact"));
 const CurrentSemester = lazy(() =>
-  import("./Pages/CurrentSemester/CurrentSemester")
+  import("./pages/CurrentSemester/CurrentSemester")
 );
 const PreviousSemester = lazy(() =>
-  import("./Pages/PreviosSemster/PreviosSemster")
+  import("./pages/PreviosSemster/PreviosSemster")
 );
-const Login = lazy(() => import("./Pages/Login/Login"));
+const Login = lazy(() => import("./pages/Login/Login"));
 
 // بارگذاری تنبل بخش ادمین
-const AdminDashboard = lazy(() => import("./Pages/Admin/AdminDashboard"));
+const AdminDashboard = lazy(() => import("./pages/Admin/AdminDashboard"));
 const HomeControl = lazy(() =>
-  import("./Pages/Admin/ChangingPannel/Home/HomeControl")
+  import("./pages/Admin/ChangingPannel/Home/HomeControl")
 );
 const AnnoControl = lazy(() =>
-  import("./Pages/Admin/ChangingPannel/AnnouncementsControl/AnnoControl")
+  import("./pages/Admin/ChangingPannel/AnnouncementsControl/AnnoControl")
 );
 const CurrentSemsterControl = lazy(() =>
   import(
-    "./Pages/Admin/ChangingPannel/CurrentSemester/CurrentSemsterController"
+    "./pages/Admin/ChangingPannel/CurrentSemester/CurrentSemsterController"
   )
 );
 const PreviosSemesterControl = lazy(() =>
-  import("./Pages/Admin/ChangingPannel/PreviosSemster/PreSemsterControl")
+  import("./pages/Admin/ChangingPannel/PreviosSemster/PreSemsterControl")
 );
 const ArticlesControler = lazy(() =>
-  import("./Pages/Admin/ChangingPannel/Articles/ArticlesControls")
+  import("./pages/Admin/ChangingPannel/Articles/ArticlesControls")
 );
 
 const ContactControl = lazy(() =>
-  import("./Pages/Admin/ChangingPannel/MessageAndAnswer/MessageAndAnswer")
+  import("./pages/Admin/ChangingPannel/MessageAndAnswer/MessageAndAnswer")
 );
 
 // بهینه‌سازی Navbar و Footer با memo

@@ -2,7 +2,7 @@ import { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Login.module.css";
-import FloatingProfessor from "../../components/Animations/FloatingProfessor";
+import FloatingProfessor from "../../components/Animations/FloatingProfessor.jsx";
 import AuthContext from "../../contexts/AuthContext.jsx";
 import Animation from "../../components/Animations/ParticleBackground.jsx";
 const Login = () => {

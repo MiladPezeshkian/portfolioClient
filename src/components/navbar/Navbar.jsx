@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Logo from "../Navbar/Logo.jsx";
-import NavLinks from "./NavLinks";
-import MobileMenu from "./MobileMenu";
+import NavLinks from "./NavLinks.jsx";
+import MobileMenu from "./MobileMenu.jsx";
 import styles from "./style.module.css";
 import useAuth from "../../hooks/useAuth.jsx";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.jsx";

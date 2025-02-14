@@ -1,5 +1,5 @@
 // ContactHeader.jsx
-import styles from "./Contact.module.css";
+import styles from "./contact.module.css";
 
 const ContactHeader = () => {
   return (

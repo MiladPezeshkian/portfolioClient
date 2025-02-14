@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import styles from "./Contact.module.css";
+import styles from "./contact.module.css";
 import ContactHeader from "./ContactHeader";
 import ContactForm from "./ContactForm";
 import InfoCards from "./InfoCards";

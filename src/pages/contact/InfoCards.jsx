@@ -1,6 +1,6 @@
 // InfoCards.jsx
 import InfoCard from "./InfoCard";
-import styles from "./Contact.module.css";
+import styles from "./contact.module.css";
 import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 
 const InfoCards = () => {

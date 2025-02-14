@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FiMapPin, FiMail, FiSend } from "react-icons/fi";
 import axios from "axios";
 import { toast } from "react-toastify";
-import styles from "./Contact.module.css";
+import styles from "./contact.module.css";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const ContactForm = () => {

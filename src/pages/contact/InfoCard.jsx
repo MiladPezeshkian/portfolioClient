@@ -1,7 +1,7 @@
 // InfoCard.jsx
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./Contact.module.css";
+import styles from "./contact.module.css";
 
 const InfoCard = ({ icon, title, content }) => {
   return (

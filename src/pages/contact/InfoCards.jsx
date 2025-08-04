@@ -25,17 +25,17 @@ const InfoCards = () => {
         content={[
           <a
             key="email1"
-            href="mailto:p.fathi@uok.ac.ir"
+            href="mailto:miladpezeshkian@uok.ac.ir"
             className={styles.link}
           >
-            p.fathi@uok.ac.ir
+            miladpezeshkian@uok.ac.ir
           </a>,
           <a
             key="email2"
-            href="mailto:parastoo.fathi@gmail.com"
+            href="mailto:miladpezeshkian@gmail.com"
             className={styles.link}
           >
-            parastoo.fathi@gmail.com
+            miladpezeshkian@gmail.com
           </a>,
         ]}
       />

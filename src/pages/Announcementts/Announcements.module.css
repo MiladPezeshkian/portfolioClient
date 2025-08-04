@@ -21,6 +21,7 @@
 .section {
   position: relative;
   overflow: hidden;
+  margin-top: 2rem;
   padding: 8rem 2rem;
   background-color: var(--navy);
 }

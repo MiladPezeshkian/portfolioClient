@@ -19,7 +19,7 @@ function Main() {
           <h1 className={styles.heroTitle}>
             Advancing AI & Software Engineering
             <span className={styles.heroSubtitle}>
-              Professor Parastoo Fathi, Ph.D.
+              dr milad pezeshkian, Ph.D.
             </span>
           </h1>
           <p className={styles.heroText}>

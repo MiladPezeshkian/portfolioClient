@@ -81,7 +81,7 @@ const CurrentSemester = () => {
             <div className={styles.titleGroup}>
               <h1 className={styles.mainTitle}>Academic Schedule</h1>
               <h2 className={styles.subTitle}>
-                {`${getCurrentSemester()} • Dr. Parastoo Fathi`}
+                {`${getCurrentSemester()} • Dr. milad pezeeshkian`}
               </h2>
             </div>
           </div>

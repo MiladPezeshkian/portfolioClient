@@ -15,11 +15,14 @@ const Footer = () => {
             <span className={styles.titleLine}></span>
           </h3>
           <p className={styles.profileText}>
-            Dr. Parastoo Fathi is a distinguished scholar in Computer
-            Engineering specializing in AI systems and software architecture.
-            With 10+ years of academic leadership and 50+ peer-reviewed
-            publications, she drives innovation in computational verification
-            methods.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+            facilis repudiandae reprehenderit. Vero quis suscipit iure
+            voluptates tempora reprehenderit molestias accusantium architecto?
+            Mollitia, repellendus, veniam earum error sunt iure eos necessrro
+            unde accusamus officiis. Sed, quod nisi! Esse, exercitationem modi
+            incidunt, est, iure eius excepturi asperiores error ipsam commodi
+            distinctio porro! Magni reiciendis eveniet consequuntur. Asperiores
+            nisi sequi amet.
           </p>
         </div>
 
@@ -83,10 +86,10 @@ const Footer = () => {
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
               </svg>
               <NavLink
-                href="mailto:ParastoFathi@uok.ac.ir"
+                href="mailto:miladpezeshkian@uok.ac.ir"
                 className="text-white"
               >
-                ParastoFathi@uok.ac.ir
+                miladpezeshkian@uok.ac.ir
               </NavLink>
             </div>
           </div>
@@ -96,7 +99,7 @@ const Footer = () => {
       {/* Copyright Section */}
       <div className={styles.copyright}>
         <p className={styles.copyrightText}>
-          © {new Date().getFullYear()} Dr. ParastoFathi
+          © {new Date().getFullYear()} Dr. miladpezeshkian
           <span className={styles.copyrightDivider}>|</span>
           All academic rights reserved
           <span className={styles.copyrightDivider}>|</span>

@@ -57,7 +57,7 @@ function Header() {
         <div className={style.visualPanel}>
           <div className={style.profileFrame}>
             <img
-              src="/imgs/women.png"
+              src="/imgs/man.png"
               alt="SomePHOTO"
               className={style.profileImage}
               loading="lazy"
